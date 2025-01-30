@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, json, useNavigate } from 'react-router-dom'
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { auth, db, doc, getDoc } from '../../Firebase/firebase';
@@ -8,9 +8,19 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
     const navigate = useNavigate("")
+    const user = JSON.parse(localStorage.getItem("user"))
 
     const [Email, SetEmail] = useState()
     const [Password, SetPassoword] = useState()
+
+    useEffect(()=>{
+
+        if(user){
+            navigate("/dashboard")
+        }
+
+
+    },[user])
 
     const SingingHanlder = (e) => {
         const notify = () => toast("Login Successfully");

@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Login, Student } from './Screen'
 import "./App.css"
 import DashBoard from './Screen/Dashboard/DashBoard'
+import Protected from './Protected'
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
     
     <Routes>
       <Route path='/' element={<Login/>}/>
-      <Route path='/dashboard' element={<DashBoard/>}/>
+      <Route path='/dashboard' element={<Protected><DashBoard/></Protected>}/>
       <Route path='/StudendAdd' element={<Student/>}/>
     </Routes>
 
